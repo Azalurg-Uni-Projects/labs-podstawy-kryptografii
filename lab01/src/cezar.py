@@ -49,3 +49,53 @@ def read_code():
         f.write(message)
 
     return message
+
+
+def blank():
+    message = ""
+    with open("data/crypto.txt", "r") as f:
+        cryptogram = f.read()
+        cryptogram = cryptogram.replace('\n', ' ')
+        cryptogram = cryptogram.lower()
+
+    with open("data/extra.txt", "r") as f:
+        extra = f.read()
+        extra = extra.replace('\n', ' ')
+        extra = extra.lower()
+        extra = extra.split(" ")
+
+    key = (ord(cryptogram[0]) - ord(extra[0]))%26
+
+    for character in cryptogram:
+        if character != " ":
+            a = ord(character) - key
+            if a < 97:
+                a = a + 26
+        else:
+            a = 32
+        message += chr(a)
+
+    with open("data/decrypt.txt", "w") as f:
+        f.write(message)
+
+    return message
+
+
+def analysis_with_extra():
+    with open("data/crypto.txt", "r") as f:
+        cryptogram = f.read()
+        cryptogram = cryptogram.replace('\n', ' ')
+        cryptogram = cryptogram.lower()
+
+    with open("data/extra.txt", "r") as f:
+        extra = f.read()
+        extra = extra.replace('\n', ' ')
+        extra = extra.lower()
+        extra = extra.split(" ")
+
+    key = (ord(cryptogram[0][0]) - ord(extra[0][0])) % 26
+
+    with open("data/key-found.txt", "w") as f:
+        f.write(str(key))
+
+    return key

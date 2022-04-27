@@ -15,7 +15,7 @@ if s2 in ["-e", "e"]:
 elif s2 in ["-d", "d"]:
     print(code.read_code())
 elif s2 in ["-j", "j"]:
-    print("krypto z jawnym")
+    print(code.analysis_with_extra())
 elif s2 in ["-k", "k"]:
     print("krypto bez jawnego")
 else:
