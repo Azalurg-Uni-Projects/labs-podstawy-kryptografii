@@ -1,3 +1,12 @@
+import numpy as np
+
+def find_prime(x):
+    counter = 0
+    while counter * x % 26 != 1:
+        counter += 1
+    return counter
+
+
 def code_message():
     cryptogram = ""
 
@@ -30,9 +39,6 @@ def code_message():
     return cryptogram
 
 
-# todo find a^ and finish code below
-
-
 def read_code():
     message = ""
     with open("data/crypto.txt", "r") as f:
@@ -46,16 +52,18 @@ def read_code():
             return "Wrong key: {}, {}".format(key[0], key[1])
         key[0] = key[0] % 26
 
+    key[1] = find_prime(key[1])
+
     for character in cryptogram:
         a = ord(character)
         if a in range(65, 91):
-            a = a + key[0]
+            a = (a - key[0])*key[1]
             while a > 90:
                 a = a - 26
         if a in range(97, 123):
-            a -= key
-            if a < 97:
-                a = a + 26
+            a = (a - key[0]) * key[1]
+            while a > 122:
+                a = a - 26
         message += chr(a)
 
     with open("data/decrypt.txt", "w") as f:
@@ -68,21 +76,21 @@ def find_key():
     with open("data/crypto.txt", "r") as f:
         cryptogram = f.read()
         cryptogram = cryptogram.replace('\n', ' ')
+        cryptogram = cryptogram.split(" ")
 
     with open("data/extra.txt", "r") as f:
         extra = f.read()
         extra = extra.replace('\n', ' ')
         extra = extra.split(" ")
+    # todo finish it
 
-    for index_word, word in enumerate(cryptogram):
-        for index_character, character in enumerate(word):
-            if ord(character) in range(65, 91) or ord(character) in range(97, 123):
-                key = (ord(character) - ord(extra[index_word][index_character])) % 26
-                with open("data/key-found.txt", "w") as f:
-                    f.write(str(key))
-                return key
-
+    for x in range(0, len(cryptogram)-2):
+        for y in range(0, len(extra) - 2):
+            a = (ord(cryptogram[x]) -ord( extra[y]))
+          a = np.reciprocal()
     key = "Can't find a key :-("
+    key = 3.0
+    print(int(3.1) == 3.1)
 
     with open("data/key-found.txt", "w") as f:
         f.write(str(key))

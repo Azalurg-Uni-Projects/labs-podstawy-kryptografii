@@ -8,7 +8,7 @@ def code_message():
     with open("data/key.txt", 'r') as f:
         key = int(f.readline().split(" ")[0])
         if key < 0:
-            return "Wrong key: {}".format(key)
+            return f"Wrong key: {key}"
         key = key % 26
 
     for character in message:
