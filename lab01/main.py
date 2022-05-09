@@ -1,3 +1,6 @@
+# Copyrights
+# Patryk Wawrzyniak
+
 import sys
 from src import cezar, anarf
 s1, s2 = sys.argv[1], sys.argv[2]
