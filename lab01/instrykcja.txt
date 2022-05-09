@@ -1,0 +1,19 @@
+# Uruchamianie
+
+``python3 main.py [p1] [p2]``
+
+# Parametry 
+
+### P1
+- c - szyfr Cezara
+- a - szyfr afiniczny
+
+### P2
+- e - szyfrowanie
+- d - odszyfrowywanie
+- j - kryptoanaliza z tekstem jawnym
+- k - kryptoanaliza wyłącznie w oparciu o kryptogram
+
+# Inne
+
+Pliki z danymi znajdują się w folderze ``/data``

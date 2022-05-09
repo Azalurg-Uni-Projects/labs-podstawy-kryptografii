@@ -86,22 +86,22 @@ def find_key():
     # todo finish it
 
     key = "Can't find a key :-("
-    for x in range(0, len(cryptogram) - 2):
-        for y in range(0, len(extra) - 2):
-            if ord(cryptogram[y]) > 91 or ord(cryptogram[x]) > 91:
-                break
-            a = (ord(cryptogram[y]) - ord(cryptogram[x]))*(ord(extra[y]) - ord(extra[x]))
-            print(a)
-            if a == 0:
-                break
-            #a = 1/a
-
-
-            a = a % 26
-            key = a
-            with open("data/key-found.txt", "w") as f:
-                f.write(str(key))
-            return key
+    # for x in range(0, len(cryptogram) - 2):
+    #     for y in range(0, len(extra) - 2):
+    #         if ord(cryptogram[y]) > 91 or ord(cryptogram[x]) > 91:
+    #             break
+    #         a = (ord(cryptogram[y]) - ord(cryptogram[x]))*(ord(extra[y]) - ord(extra[x]))
+    #         # print(a)
+    #         if a == 0:
+    #             break
+    #         #a = 1/a
+    #
+    #
+    #         a = a % 26
+    #         key = a
+    #         with open("data/key-found.txt", "w") as f:
+    #             f.write(str(key))
+    #         return key
     return key
 
 
@@ -111,7 +111,7 @@ def break_code():
         cryptogram = f.read()
         cryptogram = cryptogram.replace('\n', ' ')
     with open("data/decrypt.txt", "w") as f:
-        for key_b in range(1, 26):
+        for key_b in range(1, 27):
             for key_a in [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
                 for character in cryptogram:
                     a = ord(character)
