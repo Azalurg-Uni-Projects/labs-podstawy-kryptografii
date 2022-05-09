@@ -86,22 +86,20 @@ def find_key():
     # todo finish it
 
     key = "Can't find a key :-("
-    # for x in range(0, len(cryptogram) - 2):
-    #     for y in range(0, len(extra) - 2):
-    #         if ord(cryptogram[y]) > 91 or ord(cryptogram[x]) > 91:
-    #             break
-    #         a = (ord(cryptogram[y]) - ord(cryptogram[x]))*(ord(extra[y]) - ord(extra[x]))
-    #         # print(a)
-    #         if a == 0:
-    #             break
-    #         #a = 1/a
-    #
-    #
-    #         a = a % 26
-    #         key = a
-    #         with open("data/key-found.txt", "w") as f:
-    #             f.write(str(key))
-    #         return key
+    for x in range(0, len(cryptogram) - 2):
+        for y in range(0, len(extra) - 2):
+            if ord(cryptogram[y]) > 91 or ord(cryptogram[x]) > 91:
+                break
+            a = (ord(cryptogram[y]) - ord(cryptogram[x]))*(ord(extra[y]) - ord(extra[x]))
+            a = Math.abv(a)
+            if a == 0 or 1/a != 1//a:
+                break
+            a = 1/a  
+            a = a % 26
+            key = a
+            with open("data/key-found.txt", "w") as f:
+                f.write(str(key))
+            return key
     return key
 
 
