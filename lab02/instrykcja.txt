@@ -1,0 +1,14 @@
+# Uruchamianie
+
+``python3 main.py [p1]``
+
+# Parametry 
+
+### P1
+-p (przygotowanie tekstu do przykładu działania),
+-e (szyfrowanie),
+-k (kryptoanaliza wyłącznie w oparciu o kryptogram)
+
+# Inne
+
+Pliki z danymi znajdują się w folderze ``/data``
