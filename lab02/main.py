@@ -1,5 +1,6 @@
 # Copyrights
 # Patryk Wawrzyniak
+
 import random
 import sys
 
