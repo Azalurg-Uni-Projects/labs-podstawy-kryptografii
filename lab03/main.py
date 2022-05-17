@@ -3,34 +3,27 @@ import numpy as np
 import hashlib
 from itertools import cycle
 
-img = Image.open('images/panda.bmp')
-img = np.array(img)
-img = np.append(img, img[0:], axis=1)
-
-keys = hashlib.md5(b"key").digest()
-input_image = Image.open("images/panda.bmp")
+block_size = 8
+input_image = Image.open("images/mcqueen.bmp")
 image_data = input_image.tobytes()
-image_data = bytes(a^b for a, b in zip(image_data, cycle(keys)))
+new_data = []
+size = input_image.size
+
+keys = []
+for x in range(block_size):
+    key = hashlib.md5(str(x ** 3 + x).encode("UTF-8")).digest()
+    keys.append(key)
+
+for x in range(size[0]):
+    for y in range(size[1]):
+        pp = x * size[1] + y  # pixel position
+        op = image_data[pp]  # original pixel
+        pta = op ^ keys[x % block_size][y % block_size]     # pixel to add
+        new_data.append(pta)
+
+new_data = bytes(new_data)
+
 output_image = input_image.copy()
-output_image.frombytes(image_data)
-output_image.save("images/panda-copy.bmp")
-
-
-# from PIL import BmpImagePlugin
-# import hashlib
-# from itertools import cycle
-#
-# keys = hashlib.md5(b"aaaabbbb").digest()
-#
-# input_image = BmpImagePlugin.BmpImageFile("img/tea.bmp")
-#
-# # extract pure image data as bytes
-# image_data = input_image.tobytes()
-#
-# # encrypt
-# image_data = bytes(a^b for a, b in zip(image_data, cycle(keys)))
-#
-# # create new image, update with encrypted data and save
-# output_image = input_image.copy()
-# output_image.frombytes(image_data)
-# output_image.save("img/tea-encrypted.bmp")
+output_image.frombytes(new_data)
+output_image.save("images/ECB.bmp")
+print("I'm speed!")
