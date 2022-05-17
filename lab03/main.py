@@ -1,3 +1,6 @@
+# Copyrights
+# Patryk Wawrzyniak
+
 from PIL import Image
 import hashlib
 import random
