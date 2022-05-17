@@ -1,7 +1,6 @@
 from PIL import Image
-import numpy as np
 import hashlib
-from itertools import cycle
+import random
 
 block_size = 8
 input_image = Image.open("images/mcqueen.bmp")
@@ -11,7 +10,8 @@ size = input_image.size
 
 keys = []
 for x in range(block_size):
-    key = hashlib.md5(str(x ** 3 + x).encode("UTF-8")).digest()
+    #key = hashlib.md5(str(x ** 3 + x).encode("UTF-8")).digest()
+    key = hashlib.md5(str(random.random() * x).encode("UTF-8")).digest()
     keys.append(key)
 
 for x in range(size[0]):
