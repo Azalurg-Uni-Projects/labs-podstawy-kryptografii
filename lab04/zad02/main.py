@@ -1,4 +1,4 @@
-with open("data/hash_coppy.txt", "r") as f:
+with open("../data/hash_coppy.txt", "r") as f:
     hashes = []
     for x in f:
         hashes.append(x.replace("\n", ""))
