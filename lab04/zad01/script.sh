@@ -2,7 +2,7 @@
 
 echo "3, 2, 1, GO!!!"
 cd ../data
-file=diff-zad01.txt
+file=hash.txt
 
 if [ ! -e "$file" ] ; then
     touch "$file"
