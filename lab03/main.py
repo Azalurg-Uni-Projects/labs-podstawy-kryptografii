@@ -5,7 +5,7 @@ from PIL import Image
 import hashlib
 import random
 
-input_image = Image.open("images/plain.bmp")
+input_image = Image.open("images/b.bmp")
 
 
 def save(data, where="images/image.bmp", message="Done"):
@@ -31,7 +31,7 @@ for x in range(block_size):
 
 for x in range(size[0]):
     for y in range(size[1]):
-        pp = x * size[1] + y  # pixel position
+        pp = x * size[0] + y  # pixel position
         op = image_data[pp]  # original pixel
         pta = op ^ keys[x % block_size][y % block_size]     # pixel to add
         new_data.append(pta)
