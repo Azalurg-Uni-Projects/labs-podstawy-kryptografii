@@ -136,6 +136,8 @@ def verify():
     with open("data/verify.txt", "w") as f:
         f.write(str(one == (two % p)))
     return True
+
+
 s1 = sys.argv[1]
 
 todo = False

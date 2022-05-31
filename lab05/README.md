@@ -1,3 +1,5 @@
+# System ElGamala
+
 <P>System ten opiera się o&nbsp;trudność problemu Diffie-Hellmana, wersja
 bardziej złożona jest podstawą amerykańskiego standardu podpisu cyfrowego DSA. 
 Przygotowanie
@@ -54,62 +56,3 @@ przekazana.</P>
 
 <P>Alicja weryfikuje podpis sprawdzając równość (mod&nbsp;<I>p</I>) dwu
 wielkości: <I>g<sup>m</sup></I> oraz <I>r<sup>x</sup>*&beta;<sup>r</sup></I>.</P>
-Pożytecznym może być zastosowanie algorytmu Euklidesa opisanego 
-w&nbsp;<a href="http://inf.ug.edu.pl/~amb/krypto-lab/Euklides.html">Euklides.html</a>.
-
-<H1>Zadanie:</H1>
-<P>Program o&nbsp;nazwie
-<FONT FACE="Courier 10 Pitch">elgamal</FONT> 
-korzysta z&nbsp;pliku <FONT FACE="Courier 10 Pitch">elgamal.txt</FONT> zawierającego
-liczbę pierwszą&nbsp;<I>p</I> oraz generator&nbsp;<I>g</I>.
-Testy programu będą wykonane z&nbsp;plikiem o&nbsp;zawartości:
-<pre>
-1665997633093155705263923663680487185948531888850484859473375695734301776192932338784530163
- 170057347237941209366519667629336535698946063913573988287540019819022183488419112350737049
-</pre>
-
-Program wywołany z&nbsp;opcją 
-<ul>
-<li><FONT FACE="Courier 10 Pitch">-k</FONT> czyta z&nbsp;powyższego pliku
-    i&nbsp;generuje parę kluczy zapisanych w&nbsp;plikach 
-    <FONT FACE="Courier 10 Pitch">private.txt</FONT> oraz 
-    <FONT FACE="Courier 10 Pitch">public.txt</FONT>. Każdy klucz składa się z&nbsp;dwu
-    wierszy skopiowanych z&nbsp;powyższego pliku oraz trzeciego wiersza
-    zawierającego odpowiednio wykładnik lub potęgę.
-<li><FONT FACE="Courier 10 Pitch">-e</FONT> odczytuje klucz publiczny,
-    następnie odczytuje wiadomość z&nbsp;pliku 
-    <FONT FACE="Courier 10 Pitch">plain.txt</FONT> i&nbsp;zapisuje zaszyfrowaną
-    wiadomość w&nbsp;pliku <FONT FACE="Courier 10 Pitch">crypto.txt</FONT>.
-    Jeśli warunek <I>m&lt;p</I> nie jest spełniony, sygnalizuje błąd. 
-<li><FONT FACE="Courier 10 Pitch">-d</FONT> odczytuje klucz prywatny
-    i&nbsp;kryptogram, a&nbsp;odszyfrowaną wiadomość zapisuje w&nbsp;pliku 
-    <FONT FACE="Courier 10 Pitch">decrypt.txt</FONT>.
-<li><FONT FACE="Courier 10 Pitch">-s</FONT> odczytuje klucz prywatny,
-    następnie odczytuje wiadomość z&nbsp;pliku 
-    <FONT FACE="Courier 10 Pitch">message.txt</FONT> 
-    i&nbsp;produkuje podpis, czyli dwa wiersze zapisane do pliku 
-    <FONT FACE="Courier 10 Pitch">signature.txt</FONT>. 
-<li><FONT FACE="Courier 10 Pitch">-v</FONT> odczytuje klucz publiczny, wiadomość
-    z&nbsp;pliku <FONT FACE="Courier 10 Pitch">message.txt</FONT> oraz podpis
-    z&nbsp;pliku <FONT FACE="Courier 10 Pitch">signature.txt</FONT>
-    i&nbsp;weryfikuje ten podpis.  Wynik weryfikacji (T/N) jest wyświetlany na ekranie
-    oraz jest zapisywany w&nbsp;pliku
-    <FONT FACE="Courier 10 Pitch">verify.txt</FONT>. 
-</ul>
-Pliki <FONT FACE="Courier 10 Pitch">plain.txt</FONT> oraz
-<FONT FACE="Courier 10 Pitch">message.txt</FONT> mogą być identyczne.
-</P><P>
-Sprawdzenie poprawności programu będzie m.in. zawierało sprawdzenie
-identyczności plików <FONT FACE="Courier 10 Pitch">plain.txt</FONT> oraz <FONT
-FACE="Courier 10 Pitch">decrypt.txt</FONT> oraz sprawdzenie poprawności
-weryfikowania podpisu poprawnego (tzn. <FONT FACE="Courier 10
-Pitch">signature.txt</FONT> powstał w&nbsp;opisany wyżej sposób)
-i&nbsp;niepoprawnego w&nbsp;przeciwnym przypadku.
-</P><P>
-Program musi wykorzystywać działania arytmetyczne na liczbach kilkusetbitowych, 
-w&nbsp;niektórych językach, np. python, są one dostępne bez dodatkowych bibliotek, 
-w&nbsp;innych, np. Java, konieczne będzie użycie odpowiednich bibliotek.
-</P><P>
-Program <strong>nie ma prawa</strong> odczytywać innych plików niż wskazanych
-w&nbsp;poszczególnych opcjach.
-</P>
